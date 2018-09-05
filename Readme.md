@@ -10,19 +10,19 @@
 
 ## Pictures
 
-Inline-style: 
+### After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (1/2)
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_093011.jpg?raw=true "After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (1/2)")
 
-Inline-style: 
+### After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (2/2)
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_093017.jpg?raw=true "After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (2/2)")
 
-Inline-style: 
+### After (Step 5) Fixing the Erle-Brain 2
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_100249.jpg?raw=true "After (Step 5) Fixing the Erle-Brain 2")
 
-Inline-style: 
+### (Step 6.3) Connecting the ESCs to the Erle-Brain 2
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_100643.jpg?raw=true "(Step 6.3) Connecting the ESCs to the Erle-Brain 2")
 
-Inline-style: 
+### After the assembly, view of the drone's user interface
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_121226.jpg?raw=true "After the assembly, view of the drone's user interface")
 
 
