@@ -10,7 +10,18 @@ The Erle Copter was assembled according to the [Erle Copter: Assembly Instructio
 
 For this part, several guides were used such as [First Flight](http://docs.erlerobotics.com/erle_robots/erle_copter/first_flight), [Connect via SSH](http://docs.erlerobotics.com/brains/discontinued/erle-brain-2/getting_started/ssh), and [Connect APM](http://docs.erlerobotics.com/erle_robots/related/ground_control_station/apm_planner/connection_to_erle_brain_2). The OS image and arducopter/APM was preinstalled on the microSD. The Erle Brain 3 has an HDMI connection, which was used for direct access. The drone received internet access via ethernet from a windows laptop, which shared his Wifi access. Direct access to the university's internet was not possible via ethernet or wifi. The command to update (curl) the keys on the drone gives back an error "gpg: keyserver timed out", maybe because of the proxy settings of the used public network. Not all packages can be updated since the package apm-copter-erlebrain cannot be found. SSH access to the drone via ethernet is possible, the IP address of the drone change with every reboot. Calibration was done with QGroundControl via telemetry on a Linux laptop, the program does not show the GPS information. Listening to the UART connection shows that when the GPS is connected, information is sent and no information is received if not. On a windows laptop, QGroundControl shows some information, but an error message was displayed that the vehicle did not respond to the parameter request. The telemetry connection frequently dis- and reconnects. Once the APMPlaner2 showed some information on the windows laptop but has not been reproduced yet.
 
+#### After firmware reflashing
+
+Windows doesn't receive an IP address in the drone's WiFi automatically, therefore the IP has to be manually set to 10.0.0.2. The windows firewall was also disabled. This makes connection via APM and QGroundControl possible.
+
+
+## More good links
+
 [Ardupilot Copter Documentation](http://ardupilot.org/copter/index.html)
+
+[Forum Guide for new users](http://forum.erlerobotics.com/t/erle-copter-new-users-assembly-setup-tips/1317/4)
+
+[Erlerobotics Forum](http://forum.erlerobotics.com/)
 
 [core Flight System (NASA)](https://cfs.gsfc.nasa.gov/)
 
@@ -40,6 +51,7 @@ For this part, several guides were used such as [First Flight](http://docs.erler
 ### Before the first flights
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180907_112122.jpg?raw=true "Before the first flights")
 
-
+### QGroundControl - GPX Fix
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl - GPX Fix.png?raw=true "QGroundControl - GPX Fix")
 
 
