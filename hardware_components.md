@@ -57,7 +57,7 @@ You can check (and correct) those settings with the following steps:
 * use the ATI commands from the link to view (ATI5) and change (ATS{n}=i) the parameters
 * if necessary make sure to save (AT&W) your changes, before rebooting (ATZ) the device.  
 
-Values that work:
+Values that work:  
 S0:FORMAT= do not change this (values were 25 and 26)  
 S1:SERIAL_SPEED=57  
 S2:AIR_SPEED=64  
