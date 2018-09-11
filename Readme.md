@@ -51,6 +51,6 @@ Windows doesn't receive an IP address in the drone's WiFi automatically, therefo
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180907_112122.jpg?raw=true "Before the first flights")
 
 ### QGroundControl - GPX Fix
-![alt text]("https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl - GPX Fix.png?raw=true" "QGroundControl - GPX Fix")
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl%20-%20GPX%20Fix.png?raw=true" "QGroundControl - GPX Fix")
 
 
