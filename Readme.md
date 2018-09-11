@@ -14,7 +14,6 @@ For this part, several guides were used such as [First Flight](http://docs.erler
 
 Windows doesn't receive an IP address in the drone's WiFi automatically, therefore the IP has to be manually set to 10.0.0.2. The windows firewall was also disabled. This makes connection via APM and QGroundControl possible.
 
-
 ## More good links
 
 [Ardupilot Copter Documentation](http://ardupilot.org/copter/index.html)
@@ -52,6 +51,6 @@ Windows doesn't receive an IP address in the drone's WiFi automatically, therefo
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180907_112122.jpg?raw=true "Before the first flights")
 
 ### QGroundControl - GPX Fix
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl - GPX Fix.png?raw=true "QGroundControl - GPX Fix")
+![alt text]("https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl - GPX Fix.png?raw=true" "QGroundControl - GPX Fix")
 
 
