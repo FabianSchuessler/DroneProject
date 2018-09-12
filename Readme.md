@@ -48,14 +48,23 @@ Install QGroundControl on an android phone. Connect to the drone via WiFi or tel
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl%20-%20GPX%20Fix.png?raw=true "QGroundControl - GPX Fix")
 
 ### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100601.jpg?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100601.jpg?raw=true "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
 
 ### Take off
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/takeoff.gif?raw=true" "Take off")
-
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/takeoff.gif?raw=true "Take off")
 
 ### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100603.gif?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100603.gif?raw=true "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
+
+### QGroundControl on android phone
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-160315.jpg?raw=true "QGroundControl on android phone")
+
+### Drones takes off, flies according to waypoints and lands
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-162413.jpg?raw=true "Drones takes off, flies according to waypoints and lands")
+
+
+
+
 
 ## More links
 
