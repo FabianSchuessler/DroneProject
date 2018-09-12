@@ -50,9 +50,13 @@ Install QGroundControl on an android phone. Connect to the drone via WiFi or tel
 ### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100601.jpg?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
 
+### Take off
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/takeoff.gif?raw=true" "Take off")
+
+
 ### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100603.gif?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
- 
+
 ## More links
 
 [Ardupilot Copter Documentation](http://ardupilot.org/copter/index.html)
