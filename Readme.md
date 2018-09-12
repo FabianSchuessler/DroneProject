@@ -12,11 +12,11 @@ For this part, several guides were used such as [First Flight](http://docs.erler
 
 #### After firmware reflashing
 
-... flashing ... http://forum.erlerobotics.com/t/gps-does-not-work-and-shows-only-red-light/4355
+To receive the image of the erle brain operating system, it is required to send an email to Erle Robotics. After making a backup of the old OS, we flashed Erle-Brain-3-frambuesa-update-04-07-2017.img on the microSD. We installed apm-copter-3.5-stable-erlebrain using apt (apm-copter-erlebrain package was not available even after the successful key update). For the key update, we had to use a mobile connection since the public network available to us seems to have interfering proxy settings. We calibrated the RC Controller with the Drone and heard the music sound. We connected with windows and Linux laptops to the WiFi network provided by the copter. Windows does not receive an IP address in the drone's WiFi automatically, therefore the IP has to be manually set to 10.0.0.2. The windows firewall was also disabled. We loaded .params according to this [link](http://forum.erlerobotics.com/t/esc-calibration-failed/4050/2?u=ibaiape). We used QGroundControl to calibrate the compass and accelerometer. We added /bin/sleep 10 before while loop in ./apm.sh, this might not be necessary. Connection via WiFi makes interaction with APM and QGroundControl possible. Telemetry requires 57600 baud rate. To get GPS Fix the drone needs to be outdoors. It might take five or more minutes to get several satellites, seven satellites and a GPS speed of less than 1.0 are needed by QGroundControl, otherwise, it will not allow take off.
 
-Windows doesn't receive an IP address in the drone's WiFi automatically, therefore the IP has to be manually set to 10.0.0.2. The windows firewall was also disabled. This makes connection via APM and QGroundControl possible.
+#### Control the drone via mobile phone
 
-... gps fix ... http://forum.erlerobotics.com/t/gps-does-not-work-and-shows-only-red-light/4355
+Install QGroundControl on an android phone. Connect to the drone via WiFi or telemetry radio. WiFi has a higher bandwidth, so the initialization/loading of the parameters is faster. WiFi should have about 200m range and telemetry radio more than 300m. Check if the QGroundControl app has the UDP link configured.
 
 ## Pictures
 
@@ -47,15 +47,19 @@ Windows doesn't receive an IP address in the drone's WiFi automatically, therefo
 ### QGroundControl - GPX Fix
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/QGroundControl%20-%20GPX%20Fix.png?raw=true "QGroundControl - GPX Fix")
 
-### Drone in guided mode in the air controlled by QGroundControl on an android phone via telemetry
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100601.jpg?raw=true" "Drone in guided mode in the air controlled by QGroundControl on an android phone via telemetry")
+### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100601.jpg?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
 
-### Drone in guided mode in the air controlled by QGroundControl on an android phone via telemetry
-![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100603.gif?raw=true" "Drone in guided mode in the air controlled by QGroundControl on an android phone via telemetry")
+### Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry
+![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180912_100603.gif?raw=true" "Drone in the guided mode in the air controlled by QGroundControl on an android phone via telemetry")
 
-## More good links
+## More links
 
 [Ardupilot Copter Documentation](http://ardupilot.org/copter/index.html)
+
+[Flight modes](http://ardupilot.org/copter/docs/flight-modes.html#full-list-of-flight-modes)
+
+[Mission commands](http://ardupilot.org/copter/docs/mission-command-list.html)
 
 [Forum Guide for new users](http://forum.erlerobotics.com/t/erle-copter-new-users-assembly-setup-tips/1317/4)
 
