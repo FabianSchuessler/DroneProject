@@ -77,4 +77,6 @@ S15:MAX_WINDOW=131
 
 ## ErleBrain3
 Raspberry Pi 3  
+  user: erle  
+  password: holaerle (same for wifi provided by drone)
 ROS Hat
