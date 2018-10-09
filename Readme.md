@@ -18,9 +18,18 @@ To receive the image of the erle brain operating system, it is required to send 
 
 Install QGroundControl on an android phone. Connect to the drone via WiFi or telemetry radio. WiFi has a higher bandwidth, so the initialization/loading of the parameters is faster. WiFi should have about 200m range and telemetry radio more than 300m. Check if the QGroundControl app has the UDP link configured.
 
-#### How to install Icarous on the Drone (ARM)
+### Installing Icarous
 
 [Icarous Installation Guide](https://github.com/nasa/icarous)
+[How to fix -lwrap error? /usr/bin/x86_64-linux-gnu-ld: cannot find -lwrap #52](https://github.com/nasa/icarous/issues/52)
+[How to connect Icarous and MAVProxy #53](https://github.com/nasa/icarous/issues/53)
+
+Installing Icarous differs a bit depending on the operating system and the CPU architecture.
+It might be worth it to write the export commands into a script. We recommend the export commands because the recommend changes to the ~/.bashrc script according to the official installation guide didn't work for us.
+
+#### How to install Icarous on the Drone (ARM)
+
+We didn't figure out how to set a compilation flag for ARM/how to make the cmake run the ELSE() condition on line 45 of the cmakelists.txt, therefore we just commented lines 42-45 and 47 out.
 
 ```
 sudo su
@@ -44,10 +53,7 @@ cd cFS/bin/cpu1
 ./core-cpu1
 ```
 
-[How to fix -lwrap error? /usr/bin/x86_64-linux-gnu-ld: cannot find -lwrap #52](https://github.com/nasa/icarous/issues/52)
-[How to connect Icarous and MAVProxy #53](https://github.com/nasa/icarous/issues/53)
-
-### How to install Icarous on a Virtual Machine of Ubuntu
+#### How to install Icarous on a Virtual Machine of Ubuntu
 
 ```
 sudo su
@@ -87,7 +93,7 @@ bash SetupMavProxy.sh /home/username
 ### (Step 6.3) Connecting the ESCs to the Erle-Brain 2
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_100643.jpg?raw=true "(Step 6.3) Connecting the ESCs to the Erle-Brain 2")
 
-### After the assembly, view of the drone's user interface
+### After the assembly, the view of the drone's user interface
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_121226.jpg?raw=true "After the assembly, view of the drone's user interface")
 
 ### Erle-Brain has internet via ethernet from Laptop
