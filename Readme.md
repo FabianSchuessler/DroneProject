@@ -21,11 +21,14 @@ Install QGroundControl on an android phone. Connect to the drone via WiFi or tel
 ### Installing Icarous
 
 [Icarous Installation Guide](https://github.com/nasa/icarous)
+
 [How to fix -lwrap error? /usr/bin/x86_64-linux-gnu-ld: cannot find -lwrap #52](https://github.com/nasa/icarous/issues/52)
+
 [How to connect Icarous and MAVProxy #53](https://github.com/nasa/icarous/issues/53)
 
 Installing Icarous differs a bit depending on the operating system and the CPU architecture.
 It might be worth it to write the export commands into a script. We recommend the export commands because the recommend changes to the ~/.bashrc script according to the official installation guide didn't work for us.
+Of course the used commands might need to be adjusted to the current version.
 
 #### How to install Icarous on the Drone (ARM)
 
@@ -120,12 +123,14 @@ bash SetupMavProxy.sh /home/username
 ### QGroundControl on android phone
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-160315.jpg?raw=true "QGroundControl on android phone")
 
-### Drones takes off, flies according to waypoints and lands
+### Drone takes off, flies according to waypoints and lands
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-162413.jpg?raw=true "Drones takes off, flies according to waypoints and lands")
 
+### Icarous: Map module of MAVProxy
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/Map%20module%20of%20MAVProxy%20and%20Icarous.png "Icarous: Map module of MAVProxy")
 
-
-
+### Icarous: MAVProxy with Icarous modules
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/MAVProxy%20with%20Icarous%20Modules.PNG "Icarous: MAVProxy with Icarous modules")
 
 ## More links
 
