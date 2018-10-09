@@ -18,6 +18,61 @@ To receive the image of the erle brain operating system, it is required to send 
 
 Install QGroundControl on an android phone. Connect to the drone via WiFi or telemetry radio. WiFi has a higher bandwidth, so the initialization/loading of the parameters is faster. WiFi should have about 200m range and telemetry radio more than 300m. Check if the QGroundControl app has the UDP link configured.
 
+#### How to install Icarous on the Drone (ARM)
+
+[Icarous Installation Guide](https://github.com/nasa/icarous)
+
+```
+sudo su
+apt-get install git
+apt-get install cmake
+apt-get install oracle-java8-jdk
+git clone https://github.com/nasa/icarous.git
+sudo git submodule update --init --recursive
+cd Icarous
+nano cmakelists.txt
+```
+Lines 42-47 change to ARM
+```
+export JAVA_HOME="/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt"
+export PLEXIL_HOME="/home/erle/icarous/Modules/Plexil"
+export OSAL_HOME="/home/erle/icarous/cFS/cFE/osal"
+ln -sf /lib/i386-linux-gnu/libwrap.so.0 /usr/lib/x86_64-linux-gnu/libwrap.so
+cd build && cmake ..
+make cpu1-install
+cd cFS/bin/cpu1
+./core-cpu1
+```
+
+[How to fix -lwrap error? /usr/bin/x86_64-linux-gnu-ld: cannot find -lwrap #52](https://github.com/nasa/icarous/issues/52)
+[How to connect Icarous and MAVProxy #53](https://github.com/nasa/icarous/issues/53)
+
+### How to install Icarous on a Virtual Machine of Ubuntu
+
+```
+sudo su
+apt-get install git
+apt-get install cmake
+apt-get install oracle-java8-jdk
+apt-get install tcpd:i386
+apt-get install g++-multilib 
+apt-get install gcc-multilib
+apt-get install zlib1g-dev
+git clone https://github.com/ArduPilot/MAVProxy.git
+git clone https://github.com/nasa/icarous.git
+cd Icarous
+sudo git submodule update --init --recursive
+export JAVA_HOME="/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt"
+export PLEXIL_HOME="/home/erle/icarous/Modules/Plexil"
+export OSAL_HOME="/home/erle/icarous/cFS/cFE/osal"
+ln -sf /lib/i386-linux-gnu/libwrap.so.0 /usr/lib/x86_64-linux-gnu/libwrap.so
+cd build && cmake ..
+make cpu1-install
+cd ../Python/CustomModules
+bash SetupMavProxy.sh /home/username
+/home/username/MAVProxy/MAVProxy/mavproxy.py --master=/dev/ttyUSB0,56700 --map --console --load-module geofence,traffic,icparams
+```
+
 ## Pictures
 
 ### After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (1/2)
