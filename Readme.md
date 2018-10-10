@@ -132,6 +132,10 @@ bash SetupMavProxy.sh /home/username
 ### Icarous: MAVProxy with Icarous modules
 ![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/MAVProxy%20with%20Icarous%20Modules.PNG "Icarous: MAVProxy with Icarous modules")
 
+### How ICAROUS works
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/How%20ICAROUS%20works.PNG "How ICAROUS works")
+
+
 ## More links
 
 [Ardupilot Copter Documentation](http://ardupilot.org/copter/index.html)
