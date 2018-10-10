@@ -133,7 +133,7 @@ bash SetupMavProxy.sh /home/username
 ![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/MAVProxy%20with%20Icarous%20Modules.PNG "Icarous: MAVProxy with Icarous modules")
 
 ### How ICAROUS works
-![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/How%20ICAROUS%20works.PNG "How ICAROUS works")
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/How%20ICAROUS%20works.jpg "How ICAROUS works")
 
 
 ## More links
