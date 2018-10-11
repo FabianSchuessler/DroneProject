@@ -18,6 +18,70 @@ To receive the image of the erle brain operating system, it is required to send 
 
 Install QGroundControl on an android phone. Connect to the drone via WiFi or telemetry radio. WiFi has a higher bandwidth, so the initialization/loading of the parameters is faster. WiFi should have about 200m range and telemetry radio more than 300m. Check if the QGroundControl app has the UDP link configured.
 
+### Installing Icarous
+
+[Icarous Installation Guide](https://github.com/nasa/icarous)
+
+[How to fix -lwrap error? /usr/bin/x86_64-linux-gnu-ld: cannot find -lwrap #52](https://github.com/nasa/icarous/issues/52)
+
+[How to connect Icarous and MAVProxy #53](https://github.com/nasa/icarous/issues/53)
+
+Installing Icarous differs a bit depending on the operating system and the CPU architecture.
+It might be worth it to write the export commands into a script. We recommend the export commands because the recommend changes to the ~/.bashrc script according to the official installation guide didn't work for us.
+Of course the used commands might need to be adjusted to the current version.
+
+#### How to install Icarous on the Drone (ARM)
+
+We didn't figure out how to set a compilation flag for ARM/how to make the cmake run the ELSE() condition on line 45 of the cmakelists.txt, therefore we just commented lines 42-45 and 47 out.
+
+```
+sudo su
+apt-get install git
+apt-get install cmake
+apt-get install oracle-java8-jdk
+git clone https://github.com/nasa/icarous.git
+sudo git submodule update --init --recursive
+cd Icarous
+nano cmakelists.txt
+```
+Lines 42-47 change to ARM
+```
+export JAVA_HOME="/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt"
+export PLEXIL_HOME="/home/erle/icarous/Modules/Plexil"
+export OSAL_HOME="/home/erle/icarous/cFS/cFE/osal"
+ln -sf /lib/i386-linux-gnu/libwrap.so.0 /usr/lib/x86_64-linux-gnu/libwrap.so
+cd build && cmake ..
+make cpu1-install
+cd cFS/bin/cpu1
+./core-cpu1
+```
+
+#### How to install Icarous on a Virtual Machine of Ubuntu
+
+```
+sudo su
+apt-get install git
+apt-get install cmake
+apt-get install oracle-java8-jdk
+apt-get install tcpd:i386
+apt-get install g++-multilib 
+apt-get install gcc-multilib
+apt-get install zlib1g-dev
+git clone https://github.com/ArduPilot/MAVProxy.git
+git clone https://github.com/nasa/icarous.git
+cd Icarous
+sudo git submodule update --init --recursive
+export JAVA_HOME="/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt"
+export PLEXIL_HOME="/home/erle/icarous/Modules/Plexil"
+export OSAL_HOME="/home/erle/icarous/cFS/cFE/osal"
+ln -sf /lib/i386-linux-gnu/libwrap.so.0 /usr/lib/x86_64-linux-gnu/libwrap.so
+cd build && cmake ..
+make cpu1-install
+cd ../Python/CustomModules
+bash SetupMavProxy.sh /home/username
+/home/username/MAVProxy/MAVProxy/mavproxy.py --master=/dev/ttyUSB0,56700 --map --console --load-module geofence,traffic,icparams
+```
+
 ## Pictures
 
 ### After (Step 6) ESCs and before (Step 5) Fixing the Erle-Brain 2 (1/2)
@@ -32,7 +96,7 @@ Install QGroundControl on an android phone. Connect to the drone via WiFi or tel
 ### (Step 6.3) Connecting the ESCs to the Erle-Brain 2
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_100643.jpg?raw=true "(Step 6.3) Connecting the ESCs to the Erle-Brain 2")
 
-### After the assembly, view of the drone's user interface
+### After the assembly, the view of the drone's user interface
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/20180905_121226.jpg?raw=true "After the assembly, view of the drone's user interface")
 
 ### Erle-Brain has internet via ethernet from Laptop
@@ -59,11 +123,17 @@ Install QGroundControl on an android phone. Connect to the drone via WiFi or tel
 ### QGroundControl on android phone
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-160315.jpg?raw=true "QGroundControl on android phone")
 
-### Drones takes off, flies according to waypoints and lands
+### Drone takes off, flies according to waypoints and lands
 ![alt text](https://github.com/FabianSchuessler/DroneProject/blob/master/images/Screenshot_20180912-162413.jpg?raw=true "Drones takes off, flies according to waypoints and lands")
 
+### Icarous: Map module of MAVProxy
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/Map%20module%20of%20MAVProxy%20and%20Icarous.png "Icarous: Map module of MAVProxy")
 
+### Icarous: MAVProxy with Icarous modules
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/MAVProxy%20with%20Icarous%20Modules.PNG "Icarous: MAVProxy with Icarous modules")
 
+### How ICAROUS works
+![alt text](https://raw.githubusercontent.com/FabianSchuessler/DroneProject/master/images/How%20ICAROUS%20works.jpg "How ICAROUS works")
 
 
 ## More links
