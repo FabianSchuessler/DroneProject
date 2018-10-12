@@ -180,9 +180,9 @@ class CTFWriter(Agent):
 				raise
 			#stream.flush() #makes connection not work for some reason I couldn't figure out
 		
-		def flush():
-			for stream in self.streams.values():
-				stream.flush()
+	def flush(self):
+		for stream in self.streams.values():
+			stream.flush()
 
 ################################################################################
 

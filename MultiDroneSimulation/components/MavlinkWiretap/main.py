@@ -102,8 +102,10 @@ def main():
         except KeyboardInterrupt:
             pass
 
-    Logger.save_to_file(logpath)
+    print("saving/flushing log/trace to files")
+    Logger.save_to_file(log_path)
     ctfWriter.flush()
+    print("done saving")
 
 if __name__ == "__main__":
     main()

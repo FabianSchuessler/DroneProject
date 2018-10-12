@@ -4,6 +4,12 @@
 # (c) 2018 Joram Brenz
 # joram.brenz@online.de
 
+"""
+This was optimized to work with gnome-terminal, but you can try to use another terminal instead.
+Pressing Ctrl-C in the corresponding tab/terminal will stop the different components.
+If you want to see all error messages make sure to set your terminal settings to keep open after finishing command.
+"""
+
 # imports
 import sys
 import os
@@ -24,18 +30,12 @@ locations = ["60.397,5.318,10,0",
 			]
 n = len(locations)
 
-
-# start of GCS(s)
-gcss = []
-#q_ground_control = subprocess.Popen( [PATH_Q_GROUND_CONTROL] )
-#gcss.append(q_ground_control)
-multi_drone_coordinator = subprocess.Popen( [PATH_MULTI_DRONE_COORDINATOR, "%i" % n] )
-gcss.append(multi_drone_coordinator)
-
 def in_new_tab(name, command):
 	new_tab_command = ["gnome-terminal","--tab", "-t", name, "-e", " ".join(command)]
 	return subprocess.Popen(new_tab_command)
 
+
+print("launching components")
 
 # start n instances of the following:
 simulations  = []
@@ -49,8 +49,17 @@ for i, l in enumerate(locations):
 	time.sleep(0.1)
 	mavwiretaps.append( in_new_tab( "mavwiretap%i" % i, [PATH_MAVLINK_WIRETAP, "-I %i" % i] ) )
 
+time.sleep(20)
+
+# start of GCS(s)
+gcss = []
+#q_ground_control = subprocess.Popen( [PATH_Q_GROUND_CONTROL] )
+#gcss.append(q_ground_control)
+multi_drone_coordinator = in_new_tab( "MultiDroneCoordinator" , [PATH_MULTI_DRONE_COORDINATOR, "%i" % n] )
+gcss.append(multi_drone_coordinator)
+
+print("started all components")
+print("close all components by pressing ctr-c in the respective terminals/tabs")
 # wait until everything is closed again
 for p  in gcss + simulations + flightgears + mavwiretaps:
 	p.wait()
-
-print("finished start_everything.py")
