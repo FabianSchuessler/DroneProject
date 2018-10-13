@@ -18,9 +18,10 @@ They are used with a context manager.
 
 You will need to make sure the following packages or a similar version is installed:
 - pymavlink 2.2.10
-- babeltrace 1.5.3
 - pyserial 3.4
-All of them are available via pip[3] install command.
+All of them are available via pip[3] install command. And
+- python3-babeltrace 1.5.3
+which is available via apt-get install
 
 If you want to connect your drone via Serial just switch out the first line in main for the version in the comment there.
 (Hint: If you need a udp instead of a serial connections or vice versa and don't want to modify the code try using socat.)

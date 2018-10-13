@@ -1,0 +1,190 @@
+This file contains my raw unpolished notes that I took while working on this project.
+I took my time to translate things that were originally in German, but thats all...
+
+https://nasa.github.io/icarous/
+http://plexil.sourceforge.net
+
+https://cfs.gsfc.nasa.gov/
+http://ardupilot.org/
+
+http://docs.erlerobotics.com/brains/erle-brain-3/getting_started/wifi_client
+http://docs.erlerobotics.com/brains/erle-brain-3/getting_started/wifi_hotspot
+http://ardupilot.org/copter/docs/what-is-a-multicopter-and-how-does-it-work.html
+http://ardupilot.org/planner/index.html#home
+http://python.dronekit.io/
+https://github.com/nasa/icarous
+
+Hardware components:
+	Telemetry
+		http://ardupilot.org/copter/docs/common-sik-telemetry-radio.html
+
+Software components:
+	ROS
+		rosTopics,
+		Mavros
+	ardupilot
+		apm-copter-erlebrain
+		apm planner 2
+		SITL
+			flightgear
+	qgroundcontrol
+	mavlink
+		https://mavlink.io/en/
+			https://mavlink.io/en/protocol/mission.html
+				https://mavlink.io/en/messages/common.html#MAV_CMD
+			https://mavlink.io/en/protocol/parameter.html
+	mavproxy
+		command line based ground station (native groundstation for mavlink)
+		only supports controlling 1 vehicle -> but has experimental support for displaying multiple vehicles on map
+			https://ardupilot.github.io/MAVProxy/html/getting_started/multi.html
+	coreflight
+	icarous
+	common trace format
+	flightgear
+	dronekit -> just a nice way to script mavlink quadrocopter calls
+	...
+	
+	Other things that one could look into
+		flydan Project -> swarms with communication based on unmodified arducopter drones with companion computers and XBee modules
+			https://github.com/weskeryuan/flydan
+		commonlang, metamethods?
+		ThingML?
+		Plexil -> some nasa language for describing missions
+		gazeebo
+		pybullet
+	
+
+ArduPilot AutoPilot (apm-copter-erlebrain)
+	Autopilot Software
+	running on AV
+	reads sensors and uses them to hold drone in air (constantly regulating motor speeds, ...)
+	can get requests/commands from different sources:
+	- RC
+		throttle down when starting
+		throttle down right to arm motors
+		throttle down left to disarm motors
+	- Ground Station over telemetry
+	Flight modes
+		- stabilize
+		- alt(itude) hold
+		- loiter
+		- follow me, descend, return to launch (RTL)
+		- auto mode -> run complex missions defined by ground station
+		
+Safety equipment:
+	large towel to throw over the drone after crash or in emergency situations
+	fire extinguisher
+	first aid kit
+
+
+Problems and Solutions:
+		how about flashing other image?
+	creating network connection
+		nmcli -> doesn't work
+		writing to /etc/network/something.conf -> does work
+	downloading software key doesn't work
+		in virtual machine test whether keydownload may work
+		connect drone to network where it works :)
+	ssh to drone 
+		use ifconfig to get ip
+		over ethernet -> works somewhat
+		over wlan -> doesn't work
+	internet access for drone
+		over ethernet -> works, if computer is configured to share inet over ethernet
+		over wlan -> edit files
+	QGroundControl looses connection when RC is connected as well
+	GPS not working
+		http://forum.erlerobotics.com/t/no-gps-fix-on-erle-brain-3/3041
+		http://forum.erlerobotics.com/t/gps-not-working-erle-brain-3/2229
+		may just be broken
+		... or you just have to go outside and be patient... that seemed to fix it (facepalm)
+	Telemetry not working anymore
+		Did something physically break? (cable, etc.)
+		-> no the config just got screewed up (see hardware_components.md on how to fix)
+	Drone needs parameters to be set after flashing image
+		https://github.com/erlerobot/erle_parameters/blob/master/copter/Frambuesa-29-09-2017-default.param
+	Coreflight doesn't compile: fatal error: bits/libc-header-start.h: No such file or directory
+		 $ sudo apt-get install gcc-multilib g++-multilib
+
+	git recursive clone or submodule update times out
+		The native git protocol uses port 443 for the main repo and port 9418 for the submodules. If this port is firewalled on the network, recursive clone times out and fails.
+		Workaround: git config --global url.https://github.com/.insteadOf git://github.com/
+	Radio will start beeping after a while when it is connected but you don't use it
+		just do something on it like clicking ok to stop that (temporarily)
+
+QGroundControl is working over telemetry
+Radio and Groundcontrol have to be on before booting the drone
+
+sudo su
+systemctl (stop|start|disable|enable|status) (apm.service|xp4.service)
+screen /dev/ttyS0 (if some strange symbols occcur than GPS is working ... with correctly specified baudrate there may even be readable text)
+adding sleep 10 to apm.sh
+
+What we need:
+	cardreader, ethernet adapter
+	String
+	Glue
+	¡¡¡SHORT MICROUSBCABLE!!!
+
+something about ublox center
+	http://forum.erlerobotics.com/t/gps-tutorial-how-to-address-a-no-fix/1009
+rostopics for debugging
+	http://wiki.ros.org/rostopic
+
+what happens if you interrupt missions?
+are missions uploaded or send command by command
+	possible to upload missions
+	replanning?
+	heterogenious multiple UAVs
+
+what commands/tasks can a mission have?
+	depends on vehicle, here is a list for the drone
+	http://ardupilot.org/copter/docs/mission-command-list.html
+
+coreflight todo?
+	look at available/used topics
+	who is comminicating with whom, sensor readings, ...
+	-> look at events, define monitor that gives alarms etc.,
+	traces of correct behaviour (event streams)
+
+what happens if you deactivate a motor
+	https://github.com/ArduPilot/ardupilot/issues/838#issuecomment-70080427
+
+Plan of action:
+	install cfs
+	get as many sensor data as possible
+	-> preferably life
+		create proxy for telemetry
+		tracing
+			common trace format   https://diamon.org/ctf/
+			tracing for ardupilot http://ardupilot.org/dev/docs/using-linux-trace-toolkit-ng-lttng-to-trace-ardupilot-in-realtime.html
+			babeltrace LTTng stuf https://lttng.org/viewers/
+
+	Extending QGroundControl for Automated Mission Planning of UAVs
+		https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6068744/
+	ThingML?
+
+Installing SITL -> see MultiDroneSimulation/README.txt for better info
+	git clone https://github.com/ArduPilot/ardupilot
+	cd ardupilot
+	git config --global url.https://github.com/.insteadOf git://github.com/		#to work around network restrictions
+	git submodule update --init --recursive
+	copy folder n times to ardupilot{n} in MultiDroneSimulation/components/Simulation (there are 2 empty folders for reference)
+	ardupilot0/ArduCopter/config		-> replace MAV_SYSTEM_ID in additional folders
+	export PATH=$PATH:$HOME/ardupilot/Tools/autotest
+	./waf configure --board sitl
+	./waf --targets bin/arducopter		-> do this step only once you got all copies of ardupilot you need
+
+multiple SITL-Instances with one Groundstation?
+-> finally working! Hurray
+
+How can we coordinate those instances?
+	showing them in different windows
+	showing them on common map with qgroundcontrol
+	doing stuff with them?
+	
+	Goal: Write HVL on the fjord!
+
+Drones as a social group: where do we meet again if we get lost, who is going to do what, if youre going over there, can you do this or that for me
+
+(Also there is a physical piece of paper with more notes on code structure and used ports somewhere by the drone)
